@@ -1,160 +1,109 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title>Happy Birthday Bavani</title>
-<style>
-  :root{
-    --bg1: rgba(255,255,255,0.06);
-    --glass: rgba(255,255,255,0.07);
-    --accent: linear-gradient(90deg,#ff5f6d,#ffc371);
-    --radius: 18px;
-    --card-w: min(820px, 94%);
-  }
-  *{box-sizing:border-box;}
-  html,body{height:100%;margin:0;font-family:Inter, Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; 
-    background: radial-gradient(1200px 600px at 10% 10%, rgba(255,130,140,0.06), transparent), radial-gradient(900px 500px at 90% 90%, rgba(120,170,255,0.04), transparent), #081026; 
-    color:#fff;
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Happy Birthday Bavani — Surprise</title>
+  <style>
+    :root{
+      --bg1: rgba(255,255,255,0.06);
+      --glass: rgba(255,255,255,0.07);
+      --glass-2: rgba(255,255,255,0.04);
+      --accent: linear-gradient(90deg,#ff5f6d,#ffc371);
+      --radius: 18px;
+      --card-w: min(820px, 94%);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background: radial-gradient(1200px 600px at 10% 10%, rgba(255,130,140,0.06), transparent), radial-gradient(900px 500px at 90% 90%, rgba(120,170,255,0.04), transparent), #081026; color:#fff;}
 
-  .stage{min-height:100vh;display:grid;place-items:center;padding:3rem;}
-  .card{width:var(--card-w);border-radius:var(--radius);padding:26px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));backdrop-filter: blur(12px) saturate(1.1);box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);position:relative;overflow:hidden;}
-  .header{display:flex;gap:18px;align-items:center;}
-  .logo{width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,#ffb2c1,#b5e3ff);display:grid;place-items:center;font-weight:700;color:#081026;}
-  .title{font-size:1.15rem;}
-  .main{display:flex;gap:22px;align-items:center;margin-top:18px;}
-  .left{flex:1;min-width:200px;}
-  .right{width:340px;max-width:40%;min-width:220px;}
-  .message{padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);box-shadow:0 6px 18px rgba(2,6,23,0.5);}
-  .message p{line-height:1.45;margin:0;}
-  .message b{font-weight:800;}
-  .preview{width:100%;aspect-ratio:4/3;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.04);display:grid;place-items:center;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));}
-  .preview img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.04);transition:transform .7s cubic-bezier(.22,.9,.25,1);}
-  .controls{display:flex;gap:10px;align-items:center;margin-top:12px;}
-  .btn{padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,#ffffff10,#ffffff06);border:1px solid rgba(255,255,255,0.05);cursor:pointer;backdrop-filter: blur(6px);font-weight:600;}
-  .btn.accent{background:var(--accent);color:#081026;border:none;box-shadow:0 6px 18px rgba(255,95,109,0.09);}
-  #confettiCanvas{position:fixed;inset:0;pointer-events:none;z-index:30;}
-  .sticky{position:fixed;right:18px;bottom:18px;z-index:40;display:flex;gap:10px;}
-  .audio-hint{font-size:0.85rem;opacity:0.9;margin-top:8px;}
-  @media (max-width:880px){.main{flex-direction:column}.right{width:100%;max-width:none}}
-  @media (max-width:480px){.logo{width:56px;height:56px}.card{padding:16px;border-radius:14px}}
-  .popper{position:absolute;inset:auto 18px 18px auto;z-index:50;display:flex;gap:8px;}
-  .popper .dot{width:12px;height:12px;border-radius:999px;box-shadow:0 6px 16px rgba(2,6,23,0.5);transform-origin:center;animation:pop .9s ease both;}
-  @keyframes pop{0%{transform:scale(.2) translateY(0);opacity:0}60%{transform:scale(1.15) translateY(-6px);opacity:1}100%{transform:scale(1) translateY(-12px);opacity:1}}
-  .countdown{display:inline-grid;place-items:center;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.04);font-weight:700;}
-  .reveal{position:absolute;inset:0;background:linear-gradient(180deg, rgba(8,16,38,0.6), rgba(2,6,23,0.75));display:grid;place-items:center;padding:28px;transition:opacity .6s, transform .6s;z-index:20;}
-  .reveal.hidden{opacity:0;pointer-events:none;transform:translateY(-14px);}
-  .surprise-card{width:min(760px,94%);max-width:960px;border-radius:22px;padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));backdrop-filter: blur(14px);box-shadow:0 30px 80px rgba(0,0,0,0.7);border:1px solid rgba(255,255,255,0.05);text-align:center;}
-  .surprise-card h1{margin:0 0 10px 0;font-size:clamp(1.4rem, 3.2vw, 2.2rem);}
-  .surprise-card p{margin:0 0 18px 0;font-size:1.05rem;line-height:1.45;}
-  .surprise-img{width:85%;max-width:720px;border-radius:14px;overflow:hidden;margin:10px auto 0;box-shadow:0 18px 40px rgba(2,6,23,0.6);}
-  .surprise-img img{display:block;width:100%;height:auto;}
-</style>
+    .stage{min-height:100vh;display:grid;place-items:center;padding:3rem}
+
+    .card{width:var(--card-w);border-radius:var(--radius);padding:26px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));backdrop-filter: blur(12px) saturate(1.1);box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);position:relative;overflow:hidden}
+
+    .header{display:flex;gap:18px;align-items:center}
+    .logo{width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,#ffb2c1,#b5e3ff);display:grid;place-items:center;font-weight:700;color:#081026}
+    .title{font-size:1.15rem}
+    .subtitle{font-size:0.86rem;opacity:0.9}
+
+    .main{display:flex;gap:22px;align-items:center;margin-top:18px}
+    .left{flex:1;min-width:200px}
+    .right{width:340px;max-width:40%;min-width:220px}
+
+    .message{padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);box-shadow:0 6px 18px rgba(2,6,23,0.5)}
+    .message p{line-height:1.45;margin:0}
+    .message b{font-weight:800}
+
+    .preview{width:100%;aspect-ratio:4/3;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.04);display:grid;place-items:center;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02))}
+    .preview img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.04);transition:transform .7s cubic-bezier(.22,.9,.25,1)}
+
+    .controls{display:flex;gap:10px;align-items:center;margin-top:12px}
+    .btn{padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,#ffffff10,#ffffff06);border:1px solid rgba(255,255,255,0.05);cursor:pointer;backdrop-filter: blur(6px);font-weight:600}
+    .btn.accent{background:var(--accent);color:#081026;border:none;box-shadow:0 6px 18px rgba(255,95,109,0.09);}
+
+    #confettiCanvas{position:fixed;inset:0;pointer-events:none;z-index:30}
+
+    .sticky{position:fixed;right:18px;bottom:18px;z-index:40;display:flex;gap:10px}
+
+    .audio-hint{font-size:0.85rem;opacity:0.9;margin-top:8px}
+
+    @media (max-width:880px){
+      .main{flex-direction:column}
+      .right{width:100%;max-width:none}
+    }
+    @media (max-width:480px){
+      .logo{width:56px;height:56px}
+      .card{padding:16px;border-radius:14px}
+    }
+
+    .popper{position:absolute;inset:auto 18px 18px auto;z-index:50;display:flex;gap:8px}
+    .popper .dot{width:12px;height:12px;border-radius:999px;box-shadow:0 6px 16px rgba(2,6,23,0.5);transform-origin:center;animation:pop .9s ease both}
+    @keyframes pop{0%{transform:scale(.2) translateY(0);opacity:0}60%{transform:scale(1.15) translateY(-6px);opacity:1}100%{transform:scale(1) translateY(-12px);opacity:1}}
+
+    .countdown{display:inline-grid;place-items:center;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.04);font-weight:700}
+
+    .reveal{position:absolute;inset:0;background:linear-gradient(180deg, rgba(8,16,38,0.6), rgba(2,6,23,0.75));display:grid;place-items:center;padding:28px;transition:opacity .6s, transform .6s;z-index:20}
+    .reveal.hidden{opacity:0;pointer-events:none;transform:translateY(-14px)}
+
+    .surprise-card{width:min(760px,94%);max-width:960px;border-radius:22px;padding:28px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));backdrop-filter: blur(14px);box-shadow:0 30px 80px rgba(0,0,0,0.7);border:1px solid rgba(255,255,255,0.05);text-align:center}
+    .surprise-card h1{margin:0 0 10px 0;font-size:clamp(1.4rem, 3.2vw, 2.2rem)}
+    .surprise-card p{margin:0 0 18px 0;font-size:1.05rem;line-height:1.45}
+    .surprise-img{width:85%;max-width:720px;border-radius:14px;overflow:hidden;margin:10px auto 0;box-shadow:0 18px 40px rgba(2,6,23,0.6)}
+    .surprise-img img{display:block;width:100%;height:auto}
+  </style>
 </head>
 <body>
-<canvas id="confettiCanvas"></canvas>
-
-<div class="stage">
-  <div class="card">
-    <div class="header">
-      <div class="logo">B</div>
-      <div class="title">Happy Birthday — Bavani</div>
-      <div style="margin-left:auto"><div class="countdown" id="countBadge">3</div></div>
-    </div>
-
-    <div class="main">
-      <div class="left">
-        <div class="message"><p>Hey Bha! Nalla santhoshama Jollya iru. Unoda family, friends and with every favourite people in your life. <b>Lazarus 🫶</b></p></div>
-        <div class="controls">
-          <button class="btn accent" id="openBtn">Open Surprise</button>
-          <button class="btn" id="replayBtn">Replay Pop</button>
-          <div style="margin-left:auto"><div class="audio-hint" id="audioHint">Autoplaying music — enable sound if blocked</div></div>
+  <canvas id="confettiCanvas"></canvas>
+  <div class="stage">
+    <div class="card" role="region" aria-label="Birthday surprise for Bavani">
+      <div class="header">
+        <div class="logo">B</div>
+        <div>
+          <div class="title">Happy Birthday — Bavani</div>
+          <div class="subtitle">Autoplay surprise · Glassmorphic popup · Rainbow poppers</div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:10px;align-items:center">
+          <div class="countdown" id="countBadge">3</div>
         </div>
       </div>
-      <div class="right">
-        <div class="preview"><img id="thumbImg" src="./bavani.png" alt="preview" /></div>
-      </div>
-    </div>
 
-    <div class="popper" id="popperArea"></div>
+      <div class="main">
+        <div class="left">
+          <div class="message">
+            <p id="msgText">Hey Bha! Nalla santhoshama Jollya iru. Unoda family, friends and with every favourite people in your life. Adutha oru pakkamana intha 22nd Page of your Life filled with fulla surprises, success and miracles varanum vazhuthukkal. With heartfelt Blessings Your friend <b>Lazarus 🫶</b></p>
+          </div>
 
-    <div class="reveal hidden" id="reveal">
-      <div class="surprise-card">
-        <div id="closeIcon" style="position:absolute; top:12px; right:12px; font-size:22px; cursor:pointer; background:#ffffff20; padding:6px 10px; border-radius:10px; backdrop-filter:blur(6px);">✖</div>
-        <h1>Surprise, Bavani! 🎉</h1>
-        <p id="revealMsg">Hey Bha! Nalla santhoshama Jollya iru. Unoda family, friends and with every favourite people in your life. Adutha oru pakkamana intha 22nd Page of your Life filled with fulla surprises, success and miracles varanum vazhuthukkal. With heartfelt Blessings Your friend <b>Lazarus 🫶</b></p>
-        <div class="surprise-img" id="surpriseImgWrap"><img id="surpriseImg" src="./bavani.png" alt="Surprise Image for Bavani" /></div>
-      </div>
-    </div>
+          <div class="controls">
+            <button class="btn accent" id="openBtn" aria-controls="surprise">Open Surprise</button>
+            <button class="btn" id="replayBtn">Replay Pop</button>
+            <div style="margin-left:auto;text-align:right">
+              <div class="audio-hint" id="audioHint">Autoplaying music — enable sound if blocked</div>
+            </div>
+          </div>
+        </div>
 
-  </div>
-</div>
-
-<div class="sticky">
-  <button class="btn" id="muteToggle">🔊</button>
-  <button class="btn" id="downloadBtn">Save Image</button>
-</div>
-
-<audio id="bgAudio" loop preload="auto">
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9b5c7a2b47.mp3?filename=happy-ukulele-6396.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-const reveal = document.getElementById('reveal');
-const openBtn = document.getElementById('openBtn');
-const replayBtn = document.getElementById('replayBtn');
-const closeIcon = document.getElementById('closeIcon');
-const popperArea = document.getElementById('popperArea');
-const confettiCanvas = document.getElementById('confettiCanvas');
-const thumbImg = document.getElementById('thumbImg');
-const surpriseImg = document.getElementById('surpriseImg');
-const surpriseImgWrap = document.getElementById('surpriseImgWrap');
-const bgAudio = document.getElementById('bgAudio');
-const muteToggle = document.getElementById('muteToggle');
-const downloadBtn = document.getElementById('downloadBtn');
-
-function tryAutoplay(){ bgAudio.volume=0.6; bgAudio.play().catch(()=>{document.getElementById('audioHint').textContent='Tap to allow sound';}); }
-
-function spawnPoppers(count=24){
-  const colors=['#ff5f6d','#ffc371','#ff9a8b','#ffd8a9','#c7f9cc','#b5e3ff','#b39cff','#f7a1ff','#7efcff'];
-  for(let i=0;i<count;i++){
-    const d=document.createElement('div');
-    d.className='dot'; d.style.background=colors[i%colors.length];
-    const delay=(Math.random()*0.6).toFixed(2)+'s'; d.style.animationDelay=delay;
-    popperArea.appendChild(d);
-    const x=Math.random()*140-70; const y=Math.random()*-220-40;
-    d.animate([{transform:'translate(0,0) scale(1)'},{transform:`translate(${x}px,${y}px) scale(.9)`}],{duration:1200+Math.random()*400,fill:'forwards',easing:'cubic-bezier(.2,.9,.2,1)'});
-    setTimeout(()=>d.remove(),1800);
-  }
-}
-
-const ctx=confettiCanvas.getContext('2d'); let W=confettiCanvas.width=innerWidth; let H=confettiCanvas.height=innerHeight;
-window.addEventListener('resize',()=>{W=confettiCanvas.width=innerWidth;H=confettiCanvas.height=innerHeight;});
-const pieces=[]; const colors=['#ff5f6d','#ffc371','#ff9a8b','#ffd8a9','#c7f9cc','#b5e3ff','#b39cff','#f7a1ff','#7efcff'];
-function makeConfettiBurst(x,y,amt=80){for(let i=0;i<amt;i++){pieces.push({x,y,vx:(Math.random()-0.5)*8,vy:(Math.random()*-6-2),r:Math.random()*8+3,angle:Math.random()*360,color:colors[Math.floor(Math.random()*colors.length)],gravity:0.2,life:200+Math.random()*80});}}
-function step(){ctx.clearRect(0,0,W,H);for(let i=pieces.length-1;i>=0;i--){const p=pieces[i];p.vy+=p.gravity;p.x+=p.vx;p.y+=p.vy;p.life--;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.angle);ctx.fillStyle=p.color;ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*0.6);ctx.restore();if(p.life<=0||p.y>H+50)pieces.splice(i,1);}requestAnimationFrame(step);}
-step();
-
-function showReveal(){ 
-  reveal.classList.remove('hidden'); 
-  surpriseImgWrap.style.display='block';
-  spawnPoppers(40); makeConfettiBurst(innerWidth/2, innerHeight/3,200);
-  surpriseImg.style.opacity=0; setTimeout(()=>{surpriseImg.style.opacity=1;},100);
-  tryAutoplay();
-}
-
-openBtn.addEventListener('click',()=>{ showReveal(); });
-closeIcon.addEventListener('click',()=>{ reveal.classList.add('hidden'); });
-replayBtn.addEventListener('click',()=>{ spawnPoppers(36); makeConfettiBurst(innerWidth/2, innerHeight/2,160); });
-
-muteToggle.addEventListener('click',()=>{bgAudio.muted=!bgAudio.muted; muteToggle.textContent=bgAudio.muted?'🔇':'🔊'; if(!bgAudio.paused) bgAudio.play().catch(()=>{});});
-downloadBtn.addEventListener('click',()=>{const a=document.createElement('a');a.href=surpriseImg.src;a.download='bavani-surprise.jpg';document.body.appendChild(a);a.click();a.remove();});
-setTimeout(()=>{tryAutoplay();},600);
-</script>
-</body>
-</html>
-<img id="thumbImg" src="./bavani.png" width='1000' height='750'><rect width='100%' height='100%' fill='%2307102a' /></svg>" alt="preview" />
+        <div class="right">
+          <div class="preview" aria-hidden="true">
+            <img id="thumbImg" src="./bavani.png" width='1000' height='750'><rect width='100%' height='100%' fill='%2307102a' /></svg>" alt="preview" />
           </div>
         </div>
       </div>
@@ -175,13 +124,15 @@ setTimeout(()=>{tryAutoplay();},600);
           ">✖</div>
 
           <h1>Surprise, Bavani! 🎉</h1>
-          <div class="surprise-img" id="surpriseImgWrap" style="display:none;">
-            <img id="surpriseImg" src="./bavani.png" alt="Surprise Image for Bavani" />
           <p id="revealMsg">
             Hey Bha! Nalla santhoshama Jollya iru. Unoda family, friends and with every favourite people in your life.
             Adutha oru pakkamana intha 22nd Page of your Life filled with fulla surprises, success and miracles
             varanum vazhuthukkal. With heartfelt Blessings Your friend <b>Lazarus 🫶</b>
-          </p> </div>
+          </p>
+
+          <div class="surprise-img" id="surpriseImgWrap" style="display:none;">
+            <img id="surpriseImg" src="./bavani.png" alt="Surprise Image for Bavani" />
+          </div>
 
         </div>
       </div>
