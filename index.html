@@ -130,15 +130,37 @@
       <div class="sparkle"></div>
 
       <!-- reveal overlay -->
-      <div class="reveal" id="reveal">
-        <div class="surprise-card" role="dialog" aria-modal="true" id="surprise">
-          <h1>Surprise, Bavani! 🎉</h1>
-          <p>May this new page of your life be glittered with laughter, love and success. Open your surprise below — and enjoy the colorful poppers!</p>
+<div class="reveal" id="reveal">
+<div class="surprise-card" role="dialog" aria-modal="true" id="surprise">
+<h1>Surprise, Bavani! 🎉</h1>
+<p>May this new page of your life be glittered with laughter, love and success. Open your surprise below — and enjoy the colorful poppers!</p>
 
-          <div class="surprise-img" id="surpriseImgWrap">
-            <!-- hidden initially, will appear with animation -->
-            <img id="surpriseImg" src="./bavani.png?q=80&w=1600&auto=format&fit=crop&crop=faces&ixlib=rb-4.0.3&s=placeholder" alt="Surprise Image for Bavani"/>
-          </div>
+
+<div class="surprise-img" id="surpriseImgWrap">
+<img id="surpriseImg" src="./bavani.png?q=80&w=1600&auto=format&fit=crop&crop=faces&ixlib=rb-4.0.3&s=placeholder" alt="Surprise Image for Bavani" />
+</div>
+</div>
+</div>
+
+
+<script>
+// Auto-close reveal after image appears
+function autoCloseReveal() {
+setTimeout(() => {
+const reveal = document.getElementById('reveal');
+reveal.style.opacity = '0';
+reveal.style.pointerEvents = 'none';
+}, 5000); // 5 seconds
+}
+
+
+// Trigger when image becomes visible
+const img = document.getElementById('surpriseImg');
+img.addEventListener('load', () => {
+img.style.opacity = '1';
+autoCloseReveal();
+});
+</script>
 
           <div style="margin-top:14px;display:flex;justify-content:center;gap:12px">
             <button class="btn accent" id="revealBtn">Reveal Now</button>
